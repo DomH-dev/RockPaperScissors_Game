@@ -71,3 +71,36 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
+/**
+ * This function can be called to play a 5 round game of rock paper scissors.
+ */
+function playGame() {
+
+  let playerWins = 0;
+  let computerWins = 0;
+  let roundCounter = 1;
+
+  while (roundCounter < 6) {
+
+    console.log(`Round ${roundCounter}!`)
+    let result = playRound(getPlayerChoice(), getComputerChoice());
+
+    if (result === "lose") {
+      computerWins++;
+    } else if (result === "win") {
+      playerWins++;
+    }
+
+    console.log(`You have won ${playerWins} rounds total. The computer has won ${computerWins} rounds total.`);
+    roundCounter++;
+  }
+
+  if (playerWins > computerWins) {
+    console.log(`You have won the game! Congratulations!`);
+  } else if (computerWins > playerWins) {
+    console.log(`You have lost the game! Sorry to hear that!`);
+  } else {
+    console.log(`It's a draw, please refresh the browser if you wish to try again.`)
+  }
+
+}
