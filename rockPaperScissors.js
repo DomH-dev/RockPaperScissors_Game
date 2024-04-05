@@ -1,3 +1,7 @@
+/**
+ * 
+ * @returns a random choice of Rock, Paper or Scissors.
+ */
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random() * 3 + 1); 
     if (randomNumber == 1) {
@@ -9,6 +13,10 @@ function getComputerChoice() {
     }
 }
 
+/**
+ * This function prompts the user for a choice out of Rock, Paper or Scissors and sanitises the result.
+ * @returns the players choice for use in the Rock, Paper Scissors game.
+ */
 function getPlayerChoice() {
     let validAnswer = 0; //
     // loop below will keep prompting the user until the correct input is made.
@@ -24,7 +32,6 @@ function getPlayerChoice() {
         ) {
             alert("Your input is invalid, please choose either Rock, Paper or Scissors.");
             validAnswer = 0;
-            break;
         } else if (playerInput === "Rock") {
             validAnswer = 1;
             playerChoice = playerInput;
@@ -39,10 +46,12 @@ function getPlayerChoice() {
     return playerChoice;
 }
 
-
-  if (playerInput != "rock") || (playerInput != "paper") || (playerInput != "scissors")
-}
-
+/**
+ * This function is used to play a single round of Rock Paper Scissors.
+ * @param {string} playerSelection this should call the function that prompts the user for an input
+ * @param {string} computerSelection this should call the function to generate a random choice for the computer
+ * @returns 
+ */
 function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === computerSelection) {
@@ -104,3 +113,10 @@ function playGame() {
   }
 
 }
+
+//initialise the variables for use wihin the functions.
+let computerChoice = "";
+let playerChoice = "";
+let result = "";
+
+playGame();
