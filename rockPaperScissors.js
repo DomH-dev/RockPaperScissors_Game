@@ -1,5 +1,16 @@
 /**
  * 
+ * @param {string} string can be any string without special characters
+ * @returns 
+ */
+function inputCapitalise(string) {
+  string = string.toLowerCase();
+  string = string.charAt(0).toUpperCase() + string.slice(1);
+  return string;
+}
+
+/**
+ * 
  * @returns a random choice of Rock, Paper or Scissors.
  */
 function getComputerChoice() {
@@ -21,10 +32,7 @@ function getPlayerChoice() {
     let validAnswer = 0; //
     // loop below will keep prompting the user until the correct input is made.
     while (validAnswer === 0) {
-        let playerInput = prompt("Please make a choice! Rock, Paper or Scissors?");
-        playerInput = playerInput.toLowerCase();
-        playerInput = playerInput.charAt(0).toUpperCase() + playerInput.slice(1);
-        console.log(playerInput);
+        let playerInput = inputCapitalise(prompt("Please make a choice! Rock, Paper or Scissors?"));
         if (
             playerInput != "Rock" &&
             playerInput != "Paper" &&
