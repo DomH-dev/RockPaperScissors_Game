@@ -8,3 +8,12 @@ function getComputerChoice() {
     return "Scissors";
   } 
 };
+
+function getPlayerChoice() {
+  let playerInput = prompt("Please make a choice! Rock, Paper or Scissors?")
+  // Statement below will sanitise the inputs
+  playerInput = playerInput.toLowerCase();
+
+  if (playerInput != "rock") || (playerInput != "paper") || (playerInput != "scissors")
+}
+
