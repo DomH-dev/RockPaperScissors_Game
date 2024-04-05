@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    const randomNumber = Math.floor(Math.random() * 3 + 1);
+    const randomNumber = Math.floor(Math.random() * 3 + 1); 
     if (randomNumber == 1) {
         return "Rock";
     } else if (randomNumber == 2) {
@@ -41,5 +41,33 @@ function getPlayerChoice() {
 
 
   if (playerInput != "rock") || (playerInput != "paper") || (playerInput != "scissors")
+}
+
+function playRound(playerSelection, computerSelection) {
+
+  if (playerSelection === computerSelection) {
+    console.log("It's a draw!");
+    return result = "draw";
+  }
+  if ((playerSelection === "Rock") && (computerSelection === "Scissors")) {
+    console.log("You win! Rock beats Scissors");
+    result = "win"; 
+  } else if ((playerSelection === "Rock") && (computerSelection === "Paper")) {
+    console.log("You lose! Rock loses to Scissors");
+    result = "lose";
+  } else if ((playerSelection === "Paper") && (computerSelection === "Rock")) {
+    console.log("You win! Paper beats Rock");
+    result = "win";
+  } else if ((playerSelection === "Paper") && (computerSelection === "Scissors")) {
+    console.log("You lose! Paper loses to Scissors");
+    result = "lose"; 
+  } else if ((playerSelection === "Scissors") && (computerSelection === "Paper")) {
+    console.log("You win! Scissors beats Paper");
+    result = "win";
+  } else if ((playerSelection === "Scissors") && (computerSelection === "Rock")) {
+    console.log("You lose! Scissors loses to Rock");
+    result = "lose";
+  } 
+  return result;
 }
 
