@@ -5,33 +5,30 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Rock Paper Scissors</title>
         <script src="rockPaperScissors.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/style.css"></link>
     </head>
     <body>
-        <div class="container" id="header">
+        <div class="container header">
             <img src="./images/rock-paper-scissors.png" alt="image of 3 hands, one for signifying each of - Rock, Paper and Scissors"></img>
             <h1>Make your choice!</h1>
         </div>
-        <div class="container" id="main-body">
-            <div class="container" id="arena">
-                <div class="container"  id="user">
-                    <button id="rock">Rock</button>
-                    <button id="paper">Paper</button>
-                    <button id="scissors">Scissors</button>
+        <div class="container container_body">
+            <div class="container container_arena">
+                <div class="container container_user">
+                    <button class="btn rock" id="rockButton">✊</button>
+                    <button class="btn paper" id="paperButton">✋</button>
+                    <button class="btn scissors" id="scissorButton">✌️</button>
                 </div>
-                <div class="container" id="opponent">
-                    <div id="rock">
-                        <img src="./images/Rock.png"></img>
-                    </div>
-                    <div id="paper">
-                        <img src="./images/Paper.png"></img>
-                    </div>
-                    <div id="scissors">
-                        <img src="./images/Scissors.png"></img>
-                    </div>
+                <div class="container container_opponent">
+                    <div class="rock" id="rockOpponent">✊</div>
+                    <div class="paper" id="paperOpponent">✋</div>
+                    <div class="scissors" id="scissorOpponent">✌️</div>
                 </div>
             </div>
-            <div class="container" id="results">
+            <div class="container container_results">
                 
             </div>
         </div>
