@@ -1,5 +1,4 @@
 /**
- *
  * @returns a random choice of Rock, Paper or Scissors.
  */
 function getComputerChoice() {
@@ -11,76 +10,6 @@ function getComputerChoice() {
     } else if (randomNumber == 3) {
         return "Scissors";
     }
-}
-
-/**
- * This function prompts the user for a choice out of Rock, Paper or Scissors and sanitises the result.
- * @returns the players choice for use in the Rock, Paper Scissors game.
- */
-function getPlayerChoice() {
-    const rockButton = document.querySelector("#rockButton");
-    const paperButton = document.querySelector("#paperButton");
-    const scissorButton = document.querySelector("#scissorButton");
-    const playerContainer = document.querySelector(".container_user");
-
-    rockButton.addEventListener("click", () => {
-        let playerChoice = "Rock";
-        paperButton.style.display = "flex";
-        scissorButton.style.display = "flex";
-        paperButton.classList.toggle("btn_hidden");
-        scissorButton.classList.toggle("btn_hidden");
-        paperButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                paperButton.style.display = "none";
-            }
-        });
-        scissorButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                scissorButton.style.display = "none";
-            }
-        });
-        return playerChoice;
-    });
-
-    paperButton.addEventListener("click", () => {
-        let playerChoice = "Paper";
-        rockButton.style.display = "flex";
-        scissorButton.style.display = "flex";
-        rockButton.classList.toggle("btn_hidden");
-        scissorButton.classList.toggle("btn_hidden");
-        rockButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                rockButton.style.display = "none";
-            }
-        });
-        scissorButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                scissorButton.style.display = "none";
-            }
-        });
-        return playerChoice;
-    });
-
-    scissorButton.addEventListener("click", () => {
-        let playerChoice = "Scissors";
-        rockButton.style.display = "flex";
-        paperButton.style.display = "flex";
-        rockButton.classList.toggle("btn_hidden");
-        paperButton.classList.toggle("btn_hidden");
-        rockButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                rockButton.style.display = "none";
-            }
-        });
-        paperButton.addEventListener("transitionend", function (e) {
-            if (e.propertyName === "opacity") {
-                paperButton.style.display = "none";
-            }
-        });
-        return playerChoice;
-    });
-
-    return playerChoice;
 }
 
 /**
