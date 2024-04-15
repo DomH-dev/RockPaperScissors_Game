@@ -14,66 +14,75 @@ function getComputerChoice() {
 
 /**
  * This function is used to play a single round of Rock Paper Scissors.
- * @param {string} playerSelection this should call the function that prompts the user for an input
- * @param {string} computerSelection this should call the function to generate a random choice for the computer
- * @returns
+ * @param {string} playerSelection this is set by which button you press
  */
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    computerChoice = getComputerChoice();
     switch (true) {
-        case playerSelection === computerSelection:
-            console.log("It's a draw!");
+        case playerSelection === computerChoice:
             result = "draw";
+            roundComment.textContent = `It's a draw!`;
             break;
-        case playerSelection === "Rock" && computerSelection === "Scissors":
-        case playerSelection === "Paper" && computerSelection === "Rock":
-        case playerSelection === "Scissors" && computerSelection === "Paper":
-            console.log(
-                `You win! ${playerSelection} beats ${computerSelection}.`
-            );
+        case playerSelection === "Rock" && computerChoice === "Scissors":
+        case playerSelection === "Paper" && computerChoice === "Rock":
+        case playerSelection === "Scissors" && computerChoice === "Paper":
             result = "win";
+            playerWins++;
+            scoreBoard.textContent = `${playerWins} - ${computerWins}`;
+            roundComment.textContent = `Congratulations! you've won this round, only ${
+                5 - playerWins
+            } more wins to go!`;
             break;
         default:
-            console.log(
-                `You lose this round! ${computerSelection} beats ${playerSelection}.`
-            );
             result = "lose";
+            computerWins++;
+            scoreBoard.textContent = `${playerWins} - ${computerWins}`;
+            roundComment.textContent = `You lose, maybe you'll do better next round!`;
             break;
     }
-    return result;
+
+    if (checkWinCondition(result)) {
+        popUpBox.style.display = "flex";
+    }
 }
 
-function checkWinCondition(playerWins, computerWins) {
+function resetGame() {
+    playerWins = 0;
+    computerWins = 0;
+    popUpBox.style.display = "none";
+    scoreBoard.textContent = `${playerWins} - ${computerWins}`;
+    roundComment.textContent = `Make your choice!`;
+}
+
+function checkWinCondition() {
     if (playerWins === 5) {
-        console.log(`You have won the game! Congratulations!`);
+        popupEndText.textContent =
+            "Congratulations on your win! Press the button below to restart";
         return true;
     } else if (computerWins === 5) {
-        console.log(`You have lost the game! Sorry to hear that!`);
+        popupEndText.textContent =
+            "You've lost this game! Press the button below to restart";
         return true;
     }
     return false;
 }
 
-/**
- * This function can be called to play a first to 5 wins game of rock paper scissors.
- */
-function playGame() {
-    let playerWins = 0;
-    let computerWins = 0;
-    let roundCounter = 1;
-
-    const resultsTextBox = document.querySelector(".container_results");
-    let result = playRound(getPlayerChoice(), getComputerChoice());
-    if (result === "lose") {
-        computerWins++;
-    } else if (result === "win") {
-        playerWins++;
-    }
-    roundCounter++;
-    checkWinCondition(playerWins, computerWins);
-}
-
 let computerChoice = "";
 let playerChoice = "";
 let result = "";
+let playerWins = 0;
+let computerWins = 0;
 
-playGame();
+const rockButton = document.querySelector("#rockButton");
+const paperButton = document.querySelector("#paperButton");
+const scissorButton = document.querySelector("#scissorButton");
+const resetButton = document.querySelector("#resetButton");
+const popUpBox = document.querySelector(".popup");
+const popupEndText = document.querySelector(".popupEndText");
+const scoreBoard = document.querySelector(".score_board");
+const roundComment = document.querySelector(".round_comment");
+
+rockButton.addEventListener("click", () => playRound("Rock"));
+paperButton.addEventListener("click", () => playRound("Paper"));
+scissorButton.addEventListener("click", () => playRound("Scissors"));
+resetButton.addEventListener("click", () => resetGame());
